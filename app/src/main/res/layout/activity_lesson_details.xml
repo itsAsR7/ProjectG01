@@ -98,7 +98,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Saved notes"
-
         android:layout_margin="10dp" />
 
     <EditText
@@ -117,7 +116,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="save notes"
+        android:text="Save notes"
+        android:layout_marginRight="26dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:layout_marginBottom="10dp"

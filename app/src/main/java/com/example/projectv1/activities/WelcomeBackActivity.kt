@@ -33,13 +33,17 @@ class WelcomeBackActivity : AppCompatActivity() {
 
         // Retrieve user data from SharedPreferences
         val sharedPrefs = getSharedPreferences("MY-PREFS", MODE_PRIVATE)
-        val userName = sharedPrefs.getString("username", "")
+        val userName = sharedPrefs.getString("username", "Diya")
 
         // Display welcome message with user's name
         welcomeText.text = "Welcome back, $userName!"
 
         // Display progress information
-        val completedLessons = sharedPrefs.getInt("completedLessons", 0)
+
+        val completedLessons = sharedPrefs
+            .getAll()
+            .filterKeys { it.startsWith("MARK_COMPLETED") }
+            .count { it.value == true }
         val totalLessons = 10 // replace with actual total number of lessons
         val progress = (completedLessons.toDouble() / totalLessons.toDouble()) * 100
         progressText.text = "You have completed $completedLessons out of $totalLessons lessons (${progress.toInt()}% progress)."
