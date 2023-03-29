@@ -25,8 +25,11 @@ class EnterNameScreenActivity : AppCompatActivity() {
             nameFromUi = findViewById(R.id.editText1)
             nameAsString = nameFromUi.text.toString()
 
-            val datasource = UserDataSource.getInstance()
-            datasource.name = nameAsString
+            val sharedPref = getSharedPreferences("MY-PREFS", MODE_PRIVATE)
+            with(sharedPref.edit()) {
+                putString("username", nameAsString)
+                commit()
+            }
 
             val i = Intent(this, LessonListActivity::class.java)
             startActivity(i)
