@@ -13,16 +13,32 @@ class MainActivity : AppCompatActivity() {
 
     private val SPLASH_TIME_OUT:Long = 2000 // 1 sec
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Handler().postDelayed({ //this is executed once the timer is over//
+        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
 
-            val i = Intent(this, EnterNameScreenActivity::class.java)
-            startActivity(i)
-            finish()
-        }, SPLASH_TIME_OUT)
+        val username = sharedPref.getString("username", null)
+
+        if (username != null) {
+            Handler().postDelayed({ //this is executed once the timer is over//
+
+                val i = Intent(this, EnterNameScreenActivity::class.java)
+                startActivity(i)
+                finish()
+            }, SPLASH_TIME_OUT)
+        } else {
+            Handler().postDelayed({ //this is executed once the timer is over//
+
+                val i = Intent(this, WelcomeBackActivity::class.java)
+                startActivity(i)
+                finish()
+            }, SPLASH_TIME_OUT)
+        }
+
     }
 }
 
