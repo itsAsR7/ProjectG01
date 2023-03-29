@@ -30,7 +30,7 @@ class LessonDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lesson_details)
 
         // Getting shared preferences
-        this.sharedPrefs  = getSharedPreferences("MY-PREFS", MODE_PRIVATE)
+        this.sharedPrefs  = getSharedPreferences(" ", MODE_PRIVATE)
 
         // Checking if the intent is not null
         if (intent != null) {
