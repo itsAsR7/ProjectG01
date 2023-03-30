@@ -1,23 +1,10 @@
 package com.example.projectv1.activities
 
-import android.content.ContentValues.TAG
 import android.content.Intent
-import android.content.SharedPreferences
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
-import android.webkit.WebResourceError
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import com.example.projectv1.R
-import com.example.projectv1.data.UserDataSource
-import com.example.projectv1.models.Lesson
 
 class WelcomeBackActivity : AppCompatActivity() {
 
@@ -44,7 +31,7 @@ class WelcomeBackActivity : AppCompatActivity() {
             .getAll()
             .filterKeys { it.startsWith("MARK_COMPLETED") }
             .count { it.value == true }
-        val totalLessons = 10 // replace with actual total number of lessons
+        val totalLessons = 6 // replace with actual total number of lessons
         val progress = (completedLessons.toDouble() / totalLessons.toDouble()) * 100
         progressText.text = "You have completed $completedLessons out of $totalLessons lessons (${progress.toInt()}% progress)."
 
