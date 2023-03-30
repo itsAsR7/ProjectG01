@@ -60,9 +60,9 @@ class WelcomeBackActivity : AppCompatActivity() {
         resetButton.setOnClickListener {
             // Delete saved user data from SharedPreferences
             val editor = sharedPrefs.edit()
-            editor.remove("username")
-            editor.remove("completedLessons")
+            editor.clear()
             editor.apply()
+
 
 
             val intent = Intent(this, EnterNameScreenActivity::class.java)

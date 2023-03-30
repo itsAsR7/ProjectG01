@@ -3,6 +3,7 @@ package com.example.projectv1.activities
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -28,6 +29,7 @@ class LessonDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson_details)
+
 
         // Getting shared preferences
         this.sharedPrefs  = getSharedPreferences("MY-PREFS", MODE_PRIVATE)
@@ -86,7 +88,9 @@ class LessonDetailsActivity : AppCompatActivity() {
 
             // Click handler for Save button
             val btnSave = findViewById<Button>(R.id.btnSave)
+
             btnSave.setOnClickListener {
+
 
                 // Updating the notes for the lesson
                 currLesson.notes = lesson_notes.text.toString()
@@ -111,6 +115,17 @@ class LessonDetailsActivity : AppCompatActivity() {
 
             // Click handler for Mark as Completed button
             val btnCompleted = findViewById<Button>(R.id.btnCompleted)
+
+            var completeBoolean = sharedPrefs.getBoolean("MARK_COMPLETED${currLesson.number}", false)
+
+
+
+
+            if(completeBoolean){
+                btnCompleted.setText("COMPLETED")
+                btnCompleted.setBackgroundColor(Color.parseColor("#63b611"))
+            }
+
             btnCompleted.setOnClickListener {
 
                 // If isCompleted true the image is displayed
@@ -124,9 +139,11 @@ class LessonDetailsActivity : AppCompatActivity() {
                     apply()
 
                     // Log message
-                    Log.d(TAG, "Success!")
-                    val toast = Toast.makeText(applicationContext, "Completed", Toast.LENGTH_LONG)
-                    toast.show()
+
+                    btnCompleted.setText("COMPLETED")
+                    btnCompleted.setBackgroundColor(Color.parseColor("#63b611"))
+
+
                 }
             }
         }
