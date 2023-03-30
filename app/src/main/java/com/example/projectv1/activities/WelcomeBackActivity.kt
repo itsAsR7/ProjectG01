@@ -33,7 +33,7 @@ class WelcomeBackActivity : AppCompatActivity() {
 
         // Retrieve user data from SharedPreferences
         val sharedPrefs = getSharedPreferences("MY-PREFS", MODE_PRIVATE)
-        val userName = sharedPrefs.getString("username", "Diya")
+        val userName = sharedPrefs.getString("username", "")
 
         // Display welcome message with user's name
         welcomeText.text = "Welcome back, $userName!"
