@@ -97,6 +97,11 @@ class LessonListActivity : AppCompatActivity() {
             }
         }
     }
+    override fun onBackPressed() {
+        val intent = Intent(this, WelcomeBackActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }
 
 

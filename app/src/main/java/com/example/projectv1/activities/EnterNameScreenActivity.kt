@@ -3,12 +3,11 @@ package com.example.projectv1.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import android.os.Handler
 import android.widget.Button
 import android.widget.EditText
-import android.util.Log
 import com.example.projectv1.R
-import com.example.projectv1.data.UserDataSource
 
 class EnterNameScreenActivity : AppCompatActivity() {
 
@@ -21,29 +20,24 @@ class EnterNameScreenActivity : AppCompatActivity() {
 
         var continueButton: Button = findViewById(R.id.button1)
         continueButton.setOnClickListener{
-
             nameFromUi = findViewById(R.id.editText1)
             nameAsString = nameFromUi.text.toString()
 
-            val sharedPref = getSharedPreferences("MY-PREFS", MODE_PRIVATE)
-            with(sharedPref.edit()) {
-                putString("username", nameAsString)
-                commit()
+            if (nameAsString.isBlank()) {
+                // Display an error message to the user
+                Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
+            } else {
+                val sharedPref = getSharedPreferences("MY-PREFS", MODE_PRIVATE)
+                with(sharedPref.edit()) {
+                    putString("username", nameAsString)
+                    commit()
+                }
+
+                val i = Intent(this, LessonListActivity::class.java)
+                i.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+                startActivity(i)
+                finish()
             }
-
-            val i = Intent(this, LessonListActivity::class.java)
-            startActivity(i)
         }
-    }
-    override fun onRestart() {
-        super.onRestart()
-        setContentView(R.layout.activity_main)
-
-        Handler().postDelayed({
-
-            val i = Intent(this, WelcomeBackActivity::class.java)
-            startActivity(i)
-            finish()
-        }, 2000)
     }
 }

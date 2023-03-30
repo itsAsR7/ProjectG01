@@ -24,8 +24,8 @@ class WelcomeBackActivity : AppCompatActivity() {
     private lateinit var welcomeText: TextView
     private lateinit var progressText: TextView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onResume() {
+        super.onResume()
         setContentView(R.layout.activity_welcome_back)
 
         welcomeText = findViewById(R.id.welcome_message)
@@ -33,7 +33,7 @@ class WelcomeBackActivity : AppCompatActivity() {
 
         // Retrieve user data from SharedPreferences
         val sharedPrefs = getSharedPreferences("MY-PREFS", MODE_PRIVATE)
-        val userName = sharedPrefs.getString("username", "")
+        val userName = sharedPrefs.getString("username", null)
 
         // Display welcome message with user's name
         welcomeText.text = "Welcome back, $userName!"

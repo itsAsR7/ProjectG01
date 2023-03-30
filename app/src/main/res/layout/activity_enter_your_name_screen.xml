@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200">
+    android:background="#EBF9FF">
 
 
     <TextView
@@ -27,8 +27,8 @@
         android:id="@+id/editText1"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:background="#F2F2F2"
-        android:hint="What's your name?"
+        android:background="#ADE5FF"
+        android:hint="ex. Jane"
         android:padding="15dp"
         android:textColorHint="#000"
         android:layout_gravity="center"

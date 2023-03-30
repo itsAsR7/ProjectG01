@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200">
+    android:background="#EBF9FF">
 
 
     <TextView
@@ -17,7 +17,7 @@
         android:layout_marginTop="50dp"
         android:gravity="center"
         android:padding="15dp"
-        android:text="Application Name"
+        android:text="Online Tutoring"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="25dp"
@@ -25,10 +25,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="100dp"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/icon"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     <TextView
